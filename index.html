@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="guest-names">Salut!</h1>
+
+    <section class="form">
+        <h2 class="form__title">Confirmați participarea</h2>
+
+        <form class="form__container" id="rsvp-form">
+            <!-- Nume -->
+            <div class="form__group form__group--nume">
+                <label class="form__label" for="nume">Nume:</label>
+                <input class="form__input" type="text" id="nume" name="nume" required>
+            </div>
+
+            <!-- Veti veni? -->
+            <fieldset class="form__group form__group--venire">
+                <legend class="form__label">Veti veni?</legend>
+                <label class="form__radio-label">
+                    <input class="form__radio" type="radio" name="veniti" value="da" required> Da, voi veni
+                </label>
+                <label class="form__radio-label">
+                    <input class="form__radio" type="radio" name="veniti" value="nu"> Nu, nu voi veni
+                </label>
+            </fieldset>
+
+            <!-- Numar persoane -->
+            <div class="form__group form__group--numar">
+                <label class="form__label" for="numar">Cate persoane veti veni?</label>
+                <input class="form__input" type="number" id="numar" name="numar" required>
+            </div>
+
+            <!-- Ce bauturi preferati -->
+            <fieldset class="form__group form__group--bauturi">
+                <legend class="form__label">Ce băuturi preferați?</legend>
+                <label class="form__checkbox-label">
+                    <input class="form__checkbox" type="checkbox" name="bauturi" value="sampanie"> Șampanie
+                </label>
+                <label class="form__checkbox-label">
+                    <input class="form__checkbox" type="checkbox" name="bauturi" value="cola"> Cola
+                </label>
+                <label class="form__checkbox-label">
+                    <input class="form__checkbox" type="checkbox" name="bauturi" value="apa"> Apă
+                </label>
+            </fieldset>
+
+            <!-- Nota -->
+            <div class="form__group form__group--nota">
+                <label class="form__label" for="nota">Notă:</label>
+                <textarea class="form__textarea" id="nota" name="nota" rows="4"
+                    placeholder="Scrieți aici observațiile dvs."></textarea>
+            </div>
+
+            <button class="form__submit" type="submit">Trimite</button>
+        </form>
+    </section>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
