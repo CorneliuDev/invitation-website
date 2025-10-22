@@ -21,7 +21,7 @@ displayGuestNames();
 
 /* Trimite datele din formular in google sheets si telegram bot */
 
-document
+/* document
 	.getElementById("rsvp-form")
 	.addEventListener("submit", async function (e) {
 		e.preventDefault();
@@ -89,4 +89,41 @@ Nota: ${data.nota || "-"}
 		} catch (err) {
 			console.error(err);
 		}
-	});
+	}); */
+
+
+    document.getElementById("rsvp-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const bauturi = Array.from(form.querySelectorAll('input[name="bauturi"]:checked')).map(i => i.value);
+
+  const data = {
+    nume: form.nume.value,
+    veniti: form.veniti.value,
+    numar: form.numar.value,
+    bauturi: bauturi,
+    nota: form.nota.value
+  };
+
+  try {
+    const res = await fetch("/.netlify/functions/rsvp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.status !== "success") {
+      throw new Error(result.message || "A apărut o eroare");
+    }
+
+    alert("RSVP trimis cu succes!");
+    form.reset();
+
+  } catch (err) {
+    console.error(err);
+    alert("Eroare la trimiterea RSVP-ului: " + err.message);
+  }
+});
