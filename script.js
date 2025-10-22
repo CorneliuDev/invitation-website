@@ -40,12 +40,12 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         nota: form.nota.value
     };
 
-    const googleScriptURL = "https://script.google.com/macros/s/AKfycbx3gLoV4TBr1gBBPWPT7fSSqbC_R01gTpL2hv9F1yEkL5EIpwMLAdrgWxP29QPfKlf3Gw/exec";
-    /* 
+    const googleScriptURL = "https://script.google.com/macros/s/AKfycbw8hIG0LxS7X84LcHUJWZyPtnxdFGJ-gUcA-GUeApJD-TrrQ282CugVGgFudRmWrKTS/exec";
     
-    aici pune link-ul de la App Script
-    daca folosesti chors intra mai intai pe https://cors-anywhere.herokuapp.com/corsdemo, activeaza si adauga https://cors-anywhere.herokuapp.com/ inaintea linkului
-     */ 
+    
+    // aici pune link-ul de la App Script
+    // daca folosesti chors intra mai intai pe https://cors-anywhere.herokuapp.com/corsdemo, activeaza si adauga https://cors-anywhere.herokuapp.com/ inaintea linkului
+     
 
 
     const telegramURL = 'https://api.telegram.org/bot8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY/sendMessage';
