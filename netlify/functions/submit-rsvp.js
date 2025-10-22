@@ -4,12 +4,24 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw8hIG0LxS7X84LcHUJWZyPtnxdFGJ-gUcA-GUeApJD-TrrQ282CugVGgFudRmWrKTS/exec";
 
 // Your actual Telegram bot token and chat ID
-const TELEGRAM_BOT_TOKEN = "8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY"; // Keep this secret!
-const TELEGRAM_CHAT_ID = "-4862293355"; // Keep this secret!
+const TELEGRAM_BOT_TOKEN = "8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY";
+const TELEGRAM_CHAT_ID = "-4862293355";
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
+// Helper function to convert JSON object to URL-encoded string
+function toUrlEncoded(obj) {
+  const pairs = [];
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      // Handle arrays (like bauturi) by joining them with a separator or just taking the first value if not intended as array
+      const value = Array.isArray(obj[key]) ? obj[key].join(',') : obj[key];
+      pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+    }
+  }
+  return pairs.join('&');
+}
+
 exports.handler = async (event, context) => {
-  // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -21,19 +33,32 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Parse the incoming JSON data from the frontend
     const requestBody = JSON.parse(event.body);
 
-    // --- Step 1: Send data to Google Apps Script ---
+    // --- Step 1: Send data to Google Apps Script using URL encoding ---
     let sheetsResponse = { status: 'pending', success: false, message: '' };
     try {
+      const urlEncodedData = toUrlEncoded(requestBody); // Convert to URL-encoded format
+
       const sheetsRes = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestBody), // Send the raw data to Apps Script
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded', // Important!
+        },
+        body: urlEncodedData, // Send URL-encoded body
       });
 
-      const sheetsResult = await sheetsRes.json();
+      const responseBodyText = await sheetsRes.text(); // Get response as text first
+      console.log("Raw response from Apps Script:", responseBodyText); // Log for debugging
+
+      let sheetsResult;
+      try {
+        sheetsResult = JSON.parse(responseBodyText); // Attempt to parse as JSON
+      } catch (jsonError) {
+        console.error("Error parsing Apps Script response as JSON:", jsonError);
+        console.error("Raw response was:", responseBodyText);
+        throw new Error(`Apps Script returned non-JSON response: ${responseBodyText}`);
+      }
 
       if (sheetsRes.ok && sheetsResult.status === 'success') {
         sheetsResponse.success = true;
@@ -65,7 +90,6 @@ Nota: ${requestBody.nota || 'N/A'}
           body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
             text: telegramMessage,
-            // parse_mode: 'HTML', // Optional: if you want HTML formatting
           }),
         });
 
@@ -86,13 +110,13 @@ Nota: ${requestBody.nota || 'N/A'}
     }
 
     // --- Step 3: Return the result to the frontend ---
-    const overallSuccess = sheetsResponse.success; // Consider overall success based on Sheets
+    const overallSuccess = sheetsResponse.success;
     const responseMessage = overallSuccess
       ? 'Datele au fost trimise cu succes!'
       : `Eroare: ${sheetsResponse.message}. Telegram: ${telegramResponse.message}`;
 
     return {
-      statusCode: overallSuccess ? 200 : 500, // 200 for success, 500 for failure
+      statusCode: overallSuccess ? 200 : 500,
       body: JSON.stringify({
         success: overallSuccess,
         message: responseMessage,
@@ -103,10 +127,6 @@ Nota: ${requestBody.nota || 'N/A'}
       }),
       headers: {
         'Content-Type': 'application/json',
-        // Optional: Add CORS headers if needed for frontend calls (though less critical if same origin)
-        // 'Access-Control-Allow-Origin': '*', // Uncomment if needed, but be cautious in production
-        // 'Access-Control-Allow-Methods': 'POST',
-        // 'Access-Control-Allow-Headers': 'Content-Type',
       },
     };
 
