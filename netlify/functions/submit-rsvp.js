@@ -4,7 +4,7 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz43S2mSzpL9YPmaWjfn3xPGaodDRRfZ0E43gGvM7K91Fzb7ZEFYBgu9efpK_y5bH5w/exec";
 // Your actual Telegram bot token and chat ID
 const TELEGRAM_BOT_TOKEN = "8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY";
-const TELEGRAM_CHAT_ID = "-4862293355";
+const TELEGRAM_CHAT_ID = "-1003160404855";
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 // Helper function to convert JSON object to URL-encoded string
