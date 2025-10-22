@@ -97,6 +97,7 @@ Nota: ${data.nota || '-'}
     }
 }); */
 
+
 /* Trimite datele din formular in google sheets si telegram bot */
 
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
@@ -113,14 +114,11 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         nota: form.nota.value
     };
 
-    // Clean the URL - remove extra spaces
-    const googleScriptURL = "https://script.google.com/macros/s/AKfycbw8hIG0LxS7X84LcHUJWZyPtnxdFGJ-gUcA-GUeApJD-TrrQ282CugVGgFudRmWrKTS/exec";
-    
-    const telegramURL = 'https://api.telegram.org/bot8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY/sendMessage'; // Removed extra spaces
+    // Point to your Netlify Function endpoint
+    const netlifyFunctionURL = '/.netlify/functions/submit-rsvp'; // This path is standard for Netlify Functions
 
     try {
-        // Send to Google Sheets
-        const resSheets = await fetch(googleScriptURL, {
+        const response = await fetch(netlifyFunctionURL, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json' 
@@ -128,46 +126,20 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
             body: JSON.stringify(data)
         });
 
-        if (!resSheets.ok) {
-            throw new Error(`Fetch Google Sheets eșuat: ${resSheets.status} ${resSheets.statusText}`);
+        const result = await response.json();
+
+        if (result.success) {
+            console.log("Success:", result.message);
+            form.reset();
+            alert('Răspunsul dvs. a fost înregistrat cu succes! Mulțumim!');
+        } else {
+            console.error("Error from function:", result.message);
+            console.error("Details:", result.details);
+            alert(`A apărut o eroare: ${result.message}`);
         }
-
-        const resultSheets = await resSheets.json();
-
-        if (resultSheets.status !== 'success') {
-            throw new Error(resultSheets.message || "Google Sheets a returnat eroare");
-        }
-
-        // Send to Telegram
-        const telegramMessage = `
-📩 RSVP nou:
-Nume: ${data.nume}
-Veti veni?: ${data.veniti}
-Numar persoane: ${data.numar}
-Bauturi: ${data.bauturi.join(', ')}
-Nota: ${data.nota || '-'}
-        `;
-
-        const resTelegram = await fetch(telegramURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: -4862293355,
-                text: telegramMessage
-            })
-        });
-
-        if (!resTelegram.ok) {
-            console.error("Eroare la trimiterea mesajului pe Telegram:", await resTelegram.text());
-            // Don't throw here as Google Sheets was successful
-        }
-
-        // Reset form on success
-        form.reset();
-        alert('Răspunsul dvs. a fost înregistrat cu succes! Mulțumim!');
 
     } catch (err) {
-        console.error('Eroare:', err);
-        alert('A apărut o eroare. Vă rugăm să încercați din nou.');
+        console.error('Network Error:', err);
+        alert('A apărut o eroare de rețea. Vă rugăm să încercați din nou.');
     }
 });
