@@ -54,7 +54,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         const resSheets = await fetch(googleScriptURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            mode: 'no-cors',
+            mode: 'cors',
             body: JSON.stringify(data)
         });
 
