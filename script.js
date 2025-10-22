@@ -26,7 +26,7 @@ displayGuestNames();
 
 /* Trimite datele din formular in google sheets si telegram bot */
 
-document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
+/* document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const form = e.target;
@@ -94,5 +94,80 @@ Nota: ${data.nota || '-'}
 
     } catch (err) {
         console.error(err);
+    }
+}); */
+
+/* Trimite datele din formular in google sheets si telegram bot */
+
+document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const bauturi = Array.from(form.querySelectorAll('input[name="bauturi"]:checked')).map(i => i.value);
+
+    const data = {
+        nume: form.nume.value,
+        veniti: form.veniti.value,
+        numar: form.numar.value,
+        bauturi: bauturi,
+        nota: form.nota.value
+    };
+
+    // Clean the URL - remove extra spaces
+    const googleScriptURL = "https://script.google.com/macros/s/AKfycbw8hIG0LxS7X84LcHUJWZyPtnxdFGJ-gUcA-GUeApJD-TrrQ282CugVGgFudRmWrKTS/exec";
+    
+    const telegramURL = 'https://api.telegram.org/bot8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY/sendMessage'; // Removed extra spaces
+
+    try {
+        // Send to Google Sheets
+        const resSheets = await fetch(googleScriptURL, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!resSheets.ok) {
+            throw new Error(`Fetch Google Sheets eșuat: ${resSheets.status} ${resSheets.statusText}`);
+        }
+
+        const resultSheets = await resSheets.json();
+
+        if (resultSheets.status !== 'success') {
+            throw new Error(resultSheets.message || "Google Sheets a returnat eroare");
+        }
+
+        // Send to Telegram
+        const telegramMessage = `
+📩 RSVP nou:
+Nume: ${data.nume}
+Veti veni?: ${data.veniti}
+Numar persoane: ${data.numar}
+Bauturi: ${data.bauturi.join(', ')}
+Nota: ${data.nota || '-'}
+        `;
+
+        const resTelegram = await fetch(telegramURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: -4862293355,
+                text: telegramMessage
+            })
+        });
+
+        if (!resTelegram.ok) {
+            console.error("Eroare la trimiterea mesajului pe Telegram:", await resTelegram.text());
+            // Don't throw here as Google Sheets was successful
+        }
+
+        // Reset form on success
+        form.reset();
+        alert('Răspunsul dvs. a fost înregistrat cu succes! Mulțumim!');
+
+    } catch (err) {
+        console.error('Eroare:', err);
+        alert('A apărut o eroare. Vă rugăm să încercați din nou.');
     }
 });
