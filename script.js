@@ -40,10 +40,11 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         nota: form.nota.value
     };
 
-    const googleScriptURL = "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbx3gLoV4TBr1gBBPWPT7fSSqbC_R01gTpL2hv9F1yEkL5EIpwMLAdrgWxP29QPfKlf3Gw/exec";
+    const googleScriptURL = "https://script.google.com/macros/s/AKfycbx3gLoV4TBr1gBBPWPT7fSSqbC_R01gTpL2hv9F1yEkL5EIpwMLAdrgWxP29QPfKlf3Gw/exec";
     /* 
+    
     aici pune link-ul de la App Script
-    daca folosesti chors intra mai intai pe https://cors-anywhere.herokuapp.com/corsdemo si activeaza
+    daca folosesti chors intra mai intai pe https://cors-anywhere.herokuapp.com/corsdemo, activeaza si adauga https://cors-anywhere.herokuapp.com/ inaintea linkului
      */ 
 
 
