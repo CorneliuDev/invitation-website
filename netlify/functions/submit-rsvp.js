@@ -2,7 +2,6 @@
 
 // Your actual Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw8hIG0LxS7X84LcHUJWZyPtnxdFGJ-gUcA-GUeApJD-TrrQ282CugVGgFudRmWrKTS/exec";
-
 // Your actual Telegram bot token and chat ID
 const TELEGRAM_BOT_TOKEN = "8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY";
 const TELEGRAM_CHAT_ID = "-4862293355";
