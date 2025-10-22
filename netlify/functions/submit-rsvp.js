@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
       const telegramMessage = `
 📩 RSVP nou:
 Nume: ${requestBody.nume}
-Veți veni?: ${requestBody.veniti}
+Participare: ${requestBody.veniti == 'da' ? '✅' : '🚫'}
 Număr persoane: ${requestBody.numar}
 Băuturi: ${(requestBody.bauturi || []).join(', ') || 'N/A'}
 Notă: ${requestBody.nota || 'N/A'}
