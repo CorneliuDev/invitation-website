@@ -1,7 +1,7 @@
 // netlify/functions/submit-rsvp.js
 
 // Your actual Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxIq-y7gl4Mt0K_cCOVy2fR3-f6CWDRTYBI-TD8LThwS1MjLfPUp2wo22IKiMYrs6gO/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpeMkVM8dlfmHuRk2yAYP8-B6Kq-y0LMaQcvJrtb_ORA09JVf6mmMkHmcz0foA1Y3h/exec";
 // Your actual Telegram bot token and chat ID
 const TELEGRAM_BOT_TOKEN = "8279901342:AAG25QUhvg1hvD2zzXbUA-fxSdJHbusEtnY";
 const TELEGRAM_CHAT_ID = "-1003160404855";
