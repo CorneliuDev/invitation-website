@@ -37,6 +37,7 @@ exports.handler = async (event, context) => {
     let sheetsSuccess = false;
     try {
       const urlEncodedData = toUrlEncoded(requestBody);
+console.log("RSVP received:", requestBody);
 
       const sheetsRes = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
