@@ -67,6 +67,7 @@ exports.handler = async (event, context) => {
     try {
       const telegramMessage = `
 📩 RSVP nou:
+URL: ${requestBody.guest}
 Nume: ${requestBody.nume}
 Participare: ${requestBody.veniti == 'da' ? '✅' : '🚫'}
 Număr persoane: ${requestBody.numar}

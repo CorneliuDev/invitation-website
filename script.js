@@ -30,8 +30,11 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
 
     const form = e.target;
     const bauturi = Array.from(form.querySelectorAll('input[name="bauturi"]:checked')).map(i => i.value);
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get("guest") || "unknown";
 
     const data = {
+        guest: guest,
         nume: form.nume.value,
         veniti: form.veniti.value,
         numar: form.numar.value,
