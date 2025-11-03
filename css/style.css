@@ -31,6 +31,7 @@
     --color-secondary: #bbbbbb;
     --color-tertiary: #fffef7;
     --font-lucy: lucy;
+    --font-runtime: runtime;
   }
 }
 @layer base {
@@ -205,11 +206,11 @@
 }
 @font-face {
   font-family: lucy;
-  src: url(./fonts/lucy-said-ok-personal-use.italic.ttf);
+  src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
 }
 @font-face {
-  font-family: kugi;
-  src: url(./fonts/kugile.regular.ttf);
+  font-family: runtime;
+  src: url(../fonts/Runtime.otf);
 }
 body {
   background-color: var(--color-tertiary);
@@ -256,11 +257,39 @@ section {
   align-items: center;
   justify-content: center;
 }
-.hero__date {
+.hero__name {
+  padding-bottom: calc(var(--spacing) * 12);
   font-family: var(--font-lucy);
+  font-size: 64px;
+  --tw-font-weight: var(--font-weight-thin);
+  font-weight: var(--font-weight-thin);
+}
+.hero__date-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__vertical-line {
+  height: calc(var(--spacing) * 24);
+  width: 2px;
+  background-color: var(--color-tertiary);
+  &--bottom {
+    margin-top: calc(var(--spacing) * 10);
+  }
+}
+.hero__vertical-line--top {
+  margin-bottom: calc(var(--spacing) * 5);
+}
+.hero__vertical-line--bottom {
+  margin-top: calc(var(--spacing) * 10);
+}
+.hero__date {
+  font-family: var(--font-runtime);
   font-size: 160px;
-  --tw-leading: 1;
-  line-height: 1;
+  --tw-leading: 0.9;
+  line-height: 0.9;
+  --tw-font-weight: var(--font-weight-thin);
+  font-weight: var(--font-weight-thin);
 }
 .hero__title {
   text-align: center;
@@ -399,11 +428,11 @@ section {
   inherits: false;
   initial-value: "";
 }
-@property --tw-leading {
+@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
+@property --tw-leading {
   syntax: "*";
   inherits: false;
 }
@@ -491,8 +520,8 @@ section {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-content: "";
-      --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-leading: initial;
       --tw-space-y-reverse: 0;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;

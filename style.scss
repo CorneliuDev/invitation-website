@@ -9,7 +9,7 @@
     
     /* Fonts */
     --font-lucy: lucy;
-    --font-kugi: kugi;
+    --font-runtime: runtime;
 
     /* Font Sizes */
     --uber: 60px;
@@ -17,12 +17,12 @@
 
 @font-face {
     font-family: lucy;
-    src: url(./fonts/lucy-said-ok-personal-use.italic.ttf);
+    src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
 }
 
 @font-face {
-    font-family: kugi;
-    src: url(./fonts/kugile.regular.ttf);
+    font-family: runtime;
+    src: url(../fonts/Runtime.otf);
 }
 
 /* ================================ Base styles ================================ */
@@ -50,13 +50,39 @@ section {
     @apply relative z-2 flex flex-col items-center justify-center;
 }
 
+.hero__name {
+    @apply font-lucy text-[64px] font-thin pb-12;
+}
+
+.hero__date-wrap {
+    @apply flex flex-col items-center;
+}
+
+.hero__vertical-line {
+    @apply bg-tertiary w-[2px] h-24;
+
+    &--bottom {
+        @apply mt-10;
+    }
+}
+
+.hero__vertical-line--top {
+    @apply mb-5;
+}
+
+.hero__vertical-line--bottom {
+    @apply mt-10;
+}
+
 .hero__date {
-    @apply text-[160px] font-lucy leading-none;
+    @apply text-[160px] font-runtime font-thin leading-[0.9];
 }
 
 .hero__title {
     @apply text-4xl font-thin text-center;
 }
+
+
 
 
 /* Form Section */
