@@ -1,19 +1,62 @@
 @import 'tailwindcss';
 
+/* ================================ Variables ================================ */
 @theme {
+    /* Colors */
     --color-primary: #eeeeee;
     --color-secondary: #bbbbbb;
-    --color-tertiary: #cccccc;
+    --color-tertiary: #fffef7;
+    
+    /* Fonts */
+    --font-lucy: lucy;
+    --font-kugi: kugi;
+
+    /* Font Sizes */
+    --uber: 60px;
 }
+
+@font-face {
+    font-family: lucy;
+    src: url(./fonts/lucy-said-ok-personal-use.italic.ttf);
+}
+
+@font-face {
+    font-family: kugi;
+    src: url(./fonts/kugile.regular.ttf);
+}
+
+/* ================================ Base styles ================================ */
 
 body {
     @apply bg-tertiary;
 }
 
+section {
+    @apply max-w-screen-md w-full mx-auto p-5;
+}
 
+/* ================================ All Styles ================================ */
 
+.hero {
+    @apply bg-center bg-no-repeat bg-cover h-screen relative text-tertiary flex flex-col justify-center items-center;
+    background-image: url(../media/hero-temp.jpg) !important;  
 
+    &::before {
+        @apply content-[''] absolute top-0 left-0 w-full h-full bg-black/50;
+    }
+}
 
+.hero__container {
+    @apply relative z-2 flex flex-col items-center justify-center;
+}
+
+.hero__date {
+    @apply text-[160px] font-lucy leading-none;
+}
+
+.hero__title {
+    @apply text-4xl font-thin text-center;
+}
 
 
 /* Form Section */
