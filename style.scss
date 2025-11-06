@@ -3,16 +3,29 @@
 /* ================================ Variables ================================ */
 @theme {
     /* Colors */
-    --color-primary: #eeeeee;
-    --color-secondary: #bbbbbb;
+    --color-primary: #706155;
+    --color-secondary: #4E4D4A;
     --color-tertiary: #fffef7;
+    --color-body: #272624;
     
     /* Fonts */
     --font-lucy: lucy;
     --font-runtime: runtime;
+    --font-mate: mate;
 
     /* Font Sizes */
-    --uber: 60px;
+    --text-uber-large: 124px;
+    --text-uber: 80px;
+    --text-h1: 64px;
+    --text-h2: 48px;
+    --text-h3: 36px;
+    --text-h4: 28px;
+    --text-h5: 24px;
+    --text-h6: 20px;
+    --text-md: 18px;
+    --text-base: 16px;
+    --text-sm: 14px;
+
 }
 
 @font-face {
@@ -25,6 +38,12 @@
     src: url(../fonts/Runtime.otf);
 }
 
+@font-face {
+    font-family: mate;
+    src: url(../fonts/mate.ttf);
+}
+
+
 /* ================================ Base styles ================================ */
 
 body {
@@ -32,17 +51,48 @@ body {
 }
 
 section {
-    @apply max-w-screen-md w-full mx-auto p-5;
+    @apply max-w-screen-sm w-full mx-auto p-5;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    @apply text-body leading-tight;
+}
+
+p {
+    @apply font-mate;
+}
+
+.btn {
+    @apply text-center py-3 px-8 duration-300 ease-in-out mt-5 font-runtime border border-primary cursor-pointer;
+}
+
+.btn-outlined {
+    @apply bg-none text-primary hover:bg-primary hover:text-tertiary;
+}
+
+.btn-full {
+    @apply bg-primary text-tertiary hover:bg-secondary;
+}
+
+.heading {
+    @apply text-h1 font-lucy font-thin leading-[0.75] relative;
 }
 
 /* ================================ All Styles ================================ */
 
+
+
+
+
+/* Hero Section */
+
 .hero {
-    @apply bg-center bg-no-repeat bg-cover h-screen relative text-tertiary flex flex-col justify-center items-center;
-    background-image: url(../media/hero-temp.jpg) !important;  
+    @apply bg-center bg-no-repeat bg-cover relative text-tertiary flex flex-col justify-center items-center;
+    background-image: url(../media/hero.webp) !important;  
 
     &::before {
-        @apply content-[''] absolute top-0 left-0 w-full h-full bg-black/50;
+        @apply content-[''] absolute bottom-0 left-0 w-full h-1/2;
+        background: linear-gradient(to top, #fffef7, #fffef700);
     }
 }
 
@@ -51,7 +101,7 @@ section {
 }
 
 .hero__name {
-    @apply font-lucy text-[64px] font-thin pb-12;
+    @apply font-lucy text-center text-body text-uber leading-[0.9] font-thin pt-12;
 }
 
 .hero__date-wrap {
@@ -59,11 +109,7 @@ section {
 }
 
 .hero__vertical-line {
-    @apply bg-tertiary w-[2px] h-24;
-
-    &--bottom {
-        @apply mt-10;
-    }
+    @apply bg-body w-[2px] h-20;
 }
 
 .hero__vertical-line--top {
@@ -75,56 +121,129 @@ section {
 }
 
 .hero__date {
-    @apply text-[160px] font-runtime font-thin leading-[0.9];
-}
-
-.hero__title {
-    @apply text-4xl font-thin text-center;
+    @apply text-uber-large text-body font-runtime font-thin leading-[0.9];
 }
 
 
 
+/* Info Section */
+
+.info__heading {
+    @apply text-h1 font-lucy font-thin leading-[0.75] mt-14 relative;
+}
+
+.info__content {
+    @apply text-secondary text-h6 pt-5;
+}
+
+.info__calendar {
+    @apply w-full  mx-auto max-w-96  mt-5;
+}
+
+.info__countdown-wrap {
+    @apply pt-8;
+}
+
+.info__countdown-item {
+    @apply font-runtime text-h2 leading-tight relative text-body; 
+}
+
+.info__countdown-item--seconds-text {
+    @apply absolute top-1/2 -translate-y-1/2 left-[70px];
+}
+
+/* Program */
+
+.program {
+    @apply pt-12;
+}
+
+.program__heading {
+    @apply text-h1 font-lucy font-thin w-full text-center leading-[0.75];
+}
+
+.program__card {
+    @apply py-5 flex flex-col items-center last:mt-5;
+}
+
+.program__card-image {
+    @apply w-32 h-auto;
+}
+
+.program__card-heading {
+    @apply text-h4 font-runtime font-thin text-center mt-5;
+}
+
+.program__card-info-wrap-outer {
+    @apply grid grid-cols-2 justify-evenly items-center mt-5 gap-[1px] bg-primary;
+}
+
+.program__card-info-wrap {
+    @apply w-full h-full flex items-center justify-center p-2 bg-tertiary;
+}
+
+.program__card-info-icon {
+    @apply w-10 h-10;
+}
+
+.program__card-info {
+    @apply text-h6 text-center w-full;
+}
+
+.program__card-button {
+    @apply w-[70%] max-w-80;
+}
+
+.program__card-info--big {
+    @apply text-h4 font-thin font-runtime;
+}
+
+.program__card-info--zoom {
+    @apply font-runtime text-left;
+
+    span {
+        @apply font-lucy text-h4;
+    }
+}
+
+.program__card-info-wrap-zoom {
+    @apply flex items-center gap-4 mt-10;
+}
+
+/* Important */
+
+.important__heading {
+    @apply text-center;
+}
 
 /* Form Section */
-.form__title {
-  @apply text-2xl font-semibold mb-6 text-center text-gray-800;
+.form__heading {
+  @apply text-center font-runtime text-h3 leading-none mb-8;
 }
 
-.form__container {
-  @apply max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md space-y-4;
+.form__icon {
+    @apply w-60 mx-auto;
+}
+
+.form__form {
+  @apply max-w-lg mx-auto border border-primary p-6 space-y-4 mt-10;
 }
 
 .form__group {
   @apply flex flex-col space-y-2;
-
-  &--nume {
-    
-  }
-
-  &--venire {
-    @apply space-y-2;
-  }
-
-  &--bauturi {
-    @apply space-y-2;
-  }
-
-  &--nota {
-    @apply space-y-2;
-  }
 }
 
 .form__label {
-  @apply font-medium text-gray-700;
+  @apply text-body font-runtime text-h6;
 }
 
-.form__input {
-  @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary;
+.form__input, .form__textarea {
+  @apply border border-primary px-3 py-2 focus:outline-none focus:ring-1 focus:ring-body text-body font-mate;
 }
 
 .form__radio-label,
 .form__checkbox-label {
-  @apply flex items-center space-x-2;
+  @apply flex items-center space-x-2 font-mate text-body text-h6 pl-4;
 }
 
 .form__radio,
@@ -133,9 +252,26 @@ section {
 }
 
 .form__textarea {
-  @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary;
+    @apply placeholder:text-primary placeholder:font-mate;
 }
 
-.form__submit {
-  @apply bg-primary text-white font-semibold py-2 px-4 rounded hover:bg-secondary transition-colors;
+.form_submit-wrap {
+    @apply flex items-center justify-center w-full;
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+.form__input-number::-webkit-outer-spin-button,
+.form__input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+.form__input-number[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* General property for other browsers (optional, but good for consistency) */
+.form__input-number[type=number] {
+  appearance: textfield;
 }

@@ -5,77 +5,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <title>Vă invităm la nunta noastră! - Corneliu & Viorica</title>
 </head>
 
 <body>
     <section class="hero">
         <div class="container hero__container">
-            <h2 class="hero__name">Corneliu & Viorica</h2>
-            <div class="hero__date-wrap">
+            <div class="hero__date-wrap" data-aos="fade-up">
                 <div class="hero__vertical-line hero__vertical-line--top"></div>
-                <h1 class="hero__date">30</h1>
-                <h1 class="hero__date">06</h1>
+                <h1 class="hero__date">16</h1>
+                <h1 class="hero__date">05</h1>
                 <h1 class="hero__date">26</h1>
                 <div class="hero__vertical-line hero__vertical-line--bottom"></div>
             </div>
-            <h2 class="hero__subtitle">Invita-te la nunta noastră!</h2>
+            <h2 class="hero__name">Corneliu & Viorica</h2>
+            
         </div>
     </section>
 
-    <section class="container form">
-        <h2 class="form__title">Confirmați participarea</h2>
+    <section class="info">
+        <div class="container info__container">
+            <h2 class="info__heading">Invită-te la nunta noastră!</h2>
+            <p class="info__content">Dragii noștri, vrem să fiți aproape de noi în cea mai specială zi din viața noastră.</p>
+            <img class="info__calendar" src="../media/calendar.png" alt="">
 
-        <form class="form__container" id="rsvp-form">
-            <!-- Nume -->
-            <div class="form__group form__group--nume">
-                <label class="form__label" for="nume">Nume:</label>
-                <input class="form__input" type="text" id="nume" name="nume" required>
+            <h2 class="info__heading">Timpul se scurge repede...</h2>
+            <div class="info__countdown-wrap" data-countdown></div>
+        </div>
+    </section>
+
+    <section class="program">
+        <div class="container program__container">
+            <h2 class="program__heading heading">Programul nostru</h2>
+            <div class="program__card-wrap">
+                <div class="program__card">
+                    <img class="program__card-image" src="./media/bouquet.svg" alt="">
+                    <h3 class="program__card-heading">Cuvântarea</h3>
+                    <div class="program__card-info-wrap-outer">
+                        <div class="program__card-info-wrap"><p class="program__card-info program__card-info--big">12:00</p></div>
+                        <div class="program__card-info-wrap"><p class="program__card-info">Cahul, str. Ciprian Porumbescu 21a</p></div>
+                    </div>
+                    <a class="btn btn-outlined program__card-button" href="https://www.google.com/maps/place/Sala+Regatului+Martorilor+lui+Iehova/@45.9131647,28.2059986,16.54z/data=!4m6!3m5!1s0x40b65cb95a8ac251:0xb1961a3dc55d990f!8m2!3d45.9106657!4d28.206171!16s%2Fg%2F11c76h1bhr?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D">Deschide adresa</a>
+                    <div class="program__card-info-wrap-zoom">
+                        <img class="program__card-info-icon" src="./media/online.svg" alt="">
+                        <div class="program__card-info-wrap-inner">
+                            <p class="program__card-info program__card-info--zoom"><span>Id:</span> 843 403 6891</p>
+                            <p class="program__card-info program__card-info--zoom"><span>Parola:</span> 292827</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-outlined program__card-button"  href="https://jworg.zoom.us/j/8434036891">Zoom</a>
+                </div>
             </div>
-
-            <!-- Veti veni? -->
-            <fieldset class="form__group form__group--venire">
-                <legend class="form__label">Veti veni?</legend>
-                <label class="form__radio-label">
-                    <input class="form__radio" type="radio" name="veniti" value="da" required> Da, voi veni
-                </label>
-                <label class="form__radio-label">
-                    <input class="form__radio" type="radio" name="veniti" value="nu"> Nu, nu voi veni
-                </label>
-            </fieldset>
-
-            <!-- Numar persoane -->
-            <div class="form__group form__group--numar">
-                <label class="form__label" for="numar">Cate persoane veti veni?</label>
-                <input class="form__input" type="number" id="numar" name="numar" required>
+            <div class="program__card-wrap">
+                <div class="program__card">
+                    <img class="program__card-image" src="./media/banket.svg" alt="">
+                    <h3 class="program__card-heading">Banchetul</h3>
+                    <div class="program__card-info-wrap-outer">
+                        <div class="program__card-info-wrap"><p class="program__card-info program__card-info--big">18:00</p></div>
+                        <div class="program__card-info-wrap"><p class="program__card-info">Văleni, Complexul EcoVillage</p></div>
+                    </div>
+                    <a class="btn btn-outlined program__card-button" href="https://www.google.com/maps/place/Sala+Regatului+Martorilor+lui+Iehova/@45.9131647,28.2059986,16.54z/data=!4m6!3m5!1s0x40b65cb95a8ac251:0xb1961a3dc55d990f!8m2!3d45.9106657!4d28.206171!16s%2Fg%2F11c76h1bhr?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D">Deschide adresa</a>
+                </div>
             </div>
+    </section>
 
-            <!-- Ce bauturi preferati -->
-            <fieldset class="form__group form__group--bauturi">
-                <legend class="form__label">Ce băuturi preferați?</legend>
-                <label class="form__checkbox-label">
-                    <input class="form__checkbox" type="checkbox" name="bauturi" value="sampanie"> Șampanie
-                </label>
-                <label class="form__checkbox-label">
-                    <input class="form__checkbox" type="checkbox" name="bauturi" value="vin"> Vin
-                </label>
-                <label class="form__checkbox-label">
-                    <input class="form__checkbox" type="checkbox" name="bauturi" value="coniac"> Coniac
-                </label>
-                <label class="form__checkbox-label">
-                    <input class="form__checkbox" type="checkbox" name="bauturi" value="none"> Băuturi nealcoolice
-                </label>
-            </fieldset>
+    <section class="important">
+        <div class="container important__container">
+            <h2 class="important__heading heading">Important</h2>
+        </div>
+    </section>
 
-            <!-- Nota -->
-            <div class="form__group form__group--nota">
-                <label class="form__label" for="nota">Notă:</label>
-                <textarea class="form__textarea" id="nota" name="nota" rows="4"
-                    placeholder="Scrieți aici observațiile dvs."></textarea>
-            </div>
+    <section class="form">
+        <div class="form__container container">
+            <img class="form__icon" src="./media/rings.svg" alt="">
+            
+            <form class="form__form" id="rsvp-form">
+                <h2 class="form__heading heading">Confirmați participarea</h2>
+                <!-- Nume -->
+                <div class="form__group form__group--nume">
+                    <label class="form__label" for="nume">Nume, Prenume:</label>
+                    <input class="form__input" type="text" id="nume" name="nume" required>
+                </div>
 
-            <button class="form__submit" type="submit">Trimite</button>
-        </form>
+                <!-- Veti veni? -->
+                <fieldset class="form__group form__group--venire">
+                    <legend class="form__label">Veti veni?</legend>
+                    <label class="form__radio-label">
+                        <input class="form__radio" type="radio" name="veniti" value="da" required> Da, voi veni
+                    </label>
+                    <label class="form__radio-label">
+                        <input class="form__radio" type="radio" name="veniti" value="nu"> Nu, nu voi veni
+                    </label>
+                </fieldset>
+
+                <!-- Numar persoane -->
+                <div class="form__group form__group--numar">
+                    <label class="form__label" for="numar">Numărul de persoane</label>
+                    <input class="form__input form__input-number" type="number" id="numar" name="numar" required>
+                </div>
+
+                <!-- Ce bauturi preferati -->
+                <fieldset class="form__group form__group--bauturi">
+                    <legend class="form__label">Ce băuturi doriți?</legend>
+                    <label class="form__checkbox-label">
+                        <input class="form__checkbox" type="checkbox" name="bauturi" value="sampanie"> Șampanie
+                    </label>
+                    <label class="form__checkbox-label">
+                        <input class="form__checkbox" type="checkbox" name="bauturi" value="vin"> Vin
+                    </label>
+                    <label class="form__checkbox-label">
+                        <input class="form__checkbox" type="checkbox" name="bauturi" value="coniac"> Coniac
+                    </label>
+                    <label class="form__checkbox-label">
+                        <input class="form__checkbox" type="checkbox" name="bauturi" value="none"> Băuturi nealcoolice
+                    </label>
+                </fieldset>
+
+                <!-- Nota -->
+                <div class="form__group form__group--nota">
+                    <label class="form__label" for="nota">Mesaj:</label>
+                    <textarea class="form__textarea" id="nota" name="nota" rows="4"
+                        placeholder="Preferințe, observații, etc."></textarea>
+                </div>
+
+                <div class="form_submit-wrap">
+                <button class="form__submit btn btn-full" type="submit">Trimite</button>
+                </div>
+            </form>
+        </div>
     </section>
 
     <script src="./script.js"></script>

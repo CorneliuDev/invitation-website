@@ -69,3 +69,66 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         alert('A apărut o eroare de rețea. Vă rugăm să încercați din nou.');
     }
 });
+
+
+
+// Countdown
+function countdown(targetDate) {
+  const countdownElement = document.querySelector('[data-countdown]');
+  
+  if (!countdownElement) {
+    console.error('Element with data-countdown attribute not found');
+    return;
+  }
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const target = new Date(targetDate).getTime();
+    const difference = target - now;
+
+    if (difference <= 0) {
+      countdownElement.innerHTML = `
+        <div style="font-variant-numeric: tabular-nums;" class="info__countdown">
+          <div class="info__countdown-item">00 zile</div>
+          <div class="info__countdown-item">00 ore</div>
+          <div class="info__countdown-item">00 minute</div>
+          <div class="info__countdown-item">00 secunde</div>
+        </div>
+      `;
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    // Pad numbers with leading zeros for consistent width
+    const d = String(days).padStart(2, '0');
+    const h = String(hours).padStart(2, '0');
+    const m = String(minutes).padStart(2, '0');
+    const s = String(seconds).padStart(2, '0');
+
+    countdownElement.innerHTML = `
+      <div style="font-variant-numeric: tabular-nums;" class="info__countdown">
+        <div class="info__countdown-item">${d} zile</div>
+        <div class="info__countdown-item">${h} ore</div>
+        <div class="info__countdown-item">${m} minute</div>
+        <div class="info__countdown-item info__countdown-item--seconds">
+            <span class="info__countdown-item--seconds-number">${s} </span>
+            <span class="info__countdown-item--seconds-text">secunde</span>
+            </div>
+      </div>
+    `;
+  }
+
+  // Update immediately, then every second
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+}
+
+// Usage:
+countdown('2026-05-16 00:00:00');
+
+AOS.init();
