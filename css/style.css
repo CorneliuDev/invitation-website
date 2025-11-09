@@ -13,10 +13,11 @@
     --font-weight-thin: 100;
     --leading-tight: 1.25;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --animate-spin: spin 1s linear infinite;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-primary: #706155;
-    --color-secondary: #4E4D4A;
+    --color-secondary: #646775;
     --color-tertiary: #fffef7;
     --color-body: #272624;
     --font-lucy: lucy;
@@ -28,7 +29,9 @@
     --text-h2: 48px;
     --text-h3: 36px;
     --text-h4: 28px;
+    --text-h5: 24px;
     --text-h6: 20px;
+    --text-md: 18px;
   }
 }
 @layer base {
@@ -206,15 +209,21 @@
   src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
 }
 @font-face {
-  font-family: runtime;
+  font-family: runtime, mate, 'Times New Roman';
   src: url(../fonts/Runtime.otf);
 }
 @font-face {
-  font-family: mate;
+  font-family: mate, 'Times New Roman', Times, serif;
   src: url(../fonts/mate.ttf);
 }
 body {
   background-color: var(--color-tertiary);
+  &.loading {
+    pointer-events: none;
+    .loading-section {
+      display: flex;
+    }
+  }
 }
 section {
   margin-inline: auto;
@@ -276,6 +285,31 @@ p {
   line-height: 0.75;
   --tw-font-weight: var(--font-weight-thin);
   font-weight: var(--font-weight-thin);
+}
+.loading-section {
+  position: fixed;
+  inset: calc(var(--spacing) * 0);
+  z-index: 50;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing) * 5);
+  background-color: color-mix(in srgb, #272624 60%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    & {
+      background-color: color-mix(in oklab, var(--color-body) 60%, transparent);
+    }
+  }
+}
+.loading-section__icon {
+  height: calc(var(--spacing) * 32);
+  width: calc(var(--spacing) * 32);
+  animation: var(--animate-spin);
+}
+.loading-section__content {
+  font-size: var(--text-h5);
+  color: var(--color-tertiary);
 }
 .hero {
   position: relative;
@@ -470,6 +504,40 @@ p {
 .important__heading {
   text-align: center;
 }
+.important__card {
+  position: relative;
+  margin-top: calc(var(--spacing) * 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--spacing) * 5);
+  &::before, &::after {
+    position: absolute;
+    top: calc(var(--spacing) * 0);
+    left: calc(var(--spacing) * 0);
+    height: 100%;
+    width: 100%;
+    rotate: 2deg;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-secondary);
+    --tw-content: '';
+    content: var(--tw-content);
+  }
+  &::after {
+    rotate: calc(2deg * -1);
+  }
+}
+.important__card-content {
+  padding-top: calc(var(--spacing) * 3);
+  text-align: center;
+  font-size: var(--text-md);
+}
+.important__card-link {
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-secondary);
+  text-underline-offset: 2px;
+}
 .form__heading {
   margin-bottom: calc(var(--spacing) * 8);
   text-align: center;
@@ -480,6 +548,7 @@ p {
 }
 .form__icon {
   margin-inline: auto;
+  margin-top: calc(var(--spacing) * 12);
   width: calc(var(--spacing) * 60);
 }
 .form__form {
@@ -532,19 +601,68 @@ p {
 }
 .form__radio-label, .form__checkbox-label {
   display: flex;
+  cursor: pointer;
+  flex-direction: row-reverse;
   align-items: center;
+  justify-content: flex-end;
+  gap: calc(var(--spacing) * 2);
   :where(& > :not(:last-child)) {
     --tw-space-x-reverse: 0;
     margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
     margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
   }
-  padding-left: calc(var(--spacing) * 4);
   font-family: var(--font-mate);
   font-size: var(--text-h6);
   color: var(--color-body);
 }
-.form__radio, .form__checkbox {
-  accent-color: var(--color-primary);
+.form__checkbox {
+  display: none;
+}
+.form__checkbox + span {
+  position: relative;
+  height: calc(var(--spacing) * 5);
+  width: calc(var(--spacing) * 5);
+  cursor: pointer;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-primary);
+}
+.form__checkbox:checked + span {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    height: calc(var(--spacing) * 6);
+    width: calc(var(--spacing) * 6);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../media/check.svg');
+  }
+}
+.form__radio {
+  display: none;
+  + span {
+    position: relative;
+    display: flex;
+    height: calc(var(--spacing) * 5);
+    width: calc(var(--spacing) * 5);
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(infinity * 1px);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-primary);
+  }
+  &:checked + span::after {
+    height: calc(var(--spacing) * 3);
+    width: calc(var(--spacing) * 3);
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-primary);
+    --tw-content: '';
+    content: var(--tw-content);
+  }
 }
 .form__textarea {
   &::placeholder {
@@ -685,6 +803,11 @@ p {
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {

@@ -4,7 +4,7 @@
 @theme {
     /* Colors */
     --color-primary: #706155;
-    --color-secondary: #4E4D4A;
+    --color-secondary: #646775;
     --color-tertiary: #fffef7;
     --color-body: #272624;
     
@@ -34,12 +34,12 @@
 }
 
 @font-face {
-    font-family: runtime;
+    font-family: runtime, mate, 'Times New Roman';
     src: url(../fonts/Runtime.otf);
 }
 
 @font-face {
-    font-family: mate;
+    font-family: mate, 'Times New Roman', Times, serif;
     src: url(../fonts/mate.ttf);
 }
 
@@ -48,6 +48,14 @@
 
 body {
     @apply bg-tertiary;
+
+    &.loading {
+        @apply pointer-events-none;
+        .loading-section {
+            @apply flex;
+        }
+    }
+   
 }
 
 section {
@@ -80,7 +88,17 @@ p {
 
 /* ================================ All Styles ================================ */
 
+.loading-section {
+    @apply hidden flex-col items-center justify-center fixed inset-0 gap-5 z-50 bg-body/60;
+}
 
+.loading-section__icon {
+    @apply h-32 w-32 animate-spin;
+}
+
+.loading-section__content {
+    @apply text-h5 text-tertiary;
+}
 
 
 
@@ -216,13 +234,34 @@ p {
     @apply text-center;
 }
 
+.important__card {
+    @apply relative flex flex-col items-center p-5 mt-10;
+
+    &::before, &::after {
+        @apply content-[''] absolute top-0 left-0 w-full h-full border border-secondary rotate-[2deg];
+    }
+
+    &::after {
+        @apply -rotate-[2deg];
+    }
+}
+
+.important__card-content {
+    @apply text-center pt-3 text-md;
+}
+
+.important__card-link {
+    @apply underline decoration-secondary underline-offset-2;
+}
+
+
 /* Form Section */
 .form__heading {
   @apply text-center font-runtime text-h3 leading-none mb-8;
 }
 
 .form__icon {
-    @apply w-60 mx-auto;
+    @apply w-60 mx-auto mt-12;
 }
 
 .form__form {
@@ -243,12 +282,38 @@ p {
 
 .form__radio-label,
 .form__checkbox-label {
-  @apply flex items-center space-x-2 font-mate text-body text-h6 pl-4;
+  @apply flex flex-row-reverse justify-end gap-2 items-center space-x-2 font-mate text-body text-h6 cursor-pointer;
 }
 
-.form__radio,
+
 .form__checkbox {
-  @apply accent-primary;
+  @apply hidden;
+}
+
+.form__checkbox + span {
+  @apply relative w-5 h-5 border border-primary cursor-pointer;
+}
+
+
+.form__checkbox:checked + span {
+
+  &::after {
+    content: '';
+    @apply absolute left-[1px] bottom-[1px] w-6 h-6 bg-contain bg-no-repeat bg-center;
+    background-image: url('../media/check.svg');
+  }
+}
+
+.form__radio {
+  @apply hidden;
+
+    + span {
+        @apply relative h-5 w-5 flex items-center justify-center border border-primary rounded-full;
+    }
+
+    &:checked + span::after {
+        @apply content-[''] w-3 h-3 bg-primary rounded-full;
+    }
 }
 
 .form__textarea {

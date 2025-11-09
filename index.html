@@ -13,6 +13,11 @@
 </head>
 
 <body>
+    <section class="loading-section">
+        <img class="loading-section__icon" src="./media/loading.svg" alt="">
+        <p class="loading-section__content">Vă rugăm să așteptați</p>
+    </section>
+    
     <section class="hero">
         <div class="container hero__container">
             <div class="hero__date-wrap" data-aos="fade-up">
@@ -76,6 +81,17 @@
     <section class="important">
         <div class="container important__container">
             <h2 class="important__heading heading">Important</h2>
+            <div class="important__card">
+                <h3 class="program__card-heading important__card-heading">Flori</h3>
+                <p class="important__card-content">Daca vă gândeați la flori, vă propunem cu drag o alternativă: Înlocuiți tradiționalele flori cu cafeaua naturală sau cu băutura voastră preferată. Vă mulțumim din suflet!
+                </p>
+            </div>
+
+            <div class="important__card">
+                <h3 class="program__card-heading important__card-heading">Moderator</h3>
+                <p class="important__card-content">Moderatorul petrecerii este John Doe. Pentru detalii apelați la <a class="important__card-link" href="tel:079 456 789">079 456 789</a>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -96,9 +112,11 @@
                     <legend class="form__label">Veti veni?</legend>
                     <label class="form__radio-label">
                         <input class="form__radio" type="radio" name="veniti" value="da" required> Da, voi veni
+                        <span></span>
                     </label>
                     <label class="form__radio-label">
                         <input class="form__radio" type="radio" name="veniti" value="nu"> Nu, nu voi veni
+                        <span></span>
                     </label>
                 </fieldset>
 
@@ -113,15 +131,19 @@
                     <legend class="form__label">Ce băuturi doriți?</legend>
                     <label class="form__checkbox-label">
                         <input class="form__checkbox" type="checkbox" name="bauturi" value="sampanie"> Șampanie
+                        <span></span>
                     </label>
                     <label class="form__checkbox-label">
                         <input class="form__checkbox" type="checkbox" name="bauturi" value="vin"> Vin
+                        <span></span>
                     </label>
                     <label class="form__checkbox-label">
                         <input class="form__checkbox" type="checkbox" name="bauturi" value="coniac"> Coniac
+                        <span></span>
                     </label>
                     <label class="form__checkbox-label">
                         <input class="form__checkbox" type="checkbox" name="bauturi" value="none"> Băuturi nealcoolice
+                        <span></span>
                     </label>
                 </fieldset>
 

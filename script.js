@@ -27,7 +27,7 @@ displayGuestNames();
 
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
     e.preventDefault();
-
+    document.body.classList.add('loading');
     const form = e.target;
     const bauturi = Array.from(form.querySelectorAll('input[name="bauturi"]:checked')).map(i => i.value);
     const urlParams = new URLSearchParams(window.location.search);
@@ -67,6 +67,8 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
     } catch (err) {
         console.error('Network Error:', err);
         alert('A apărut o eroare de rețea. Vă rugăm să încercați din nou.');
+    } finally {
+        document.body.classList.remove('loading');
     }
 });
 
