@@ -205,7 +205,7 @@
   }
 }
 @font-face {
-  font-family: lucy;
+  font-family: lucy, 'Times New Roman';
   src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
 }
 @font-face {
@@ -283,8 +283,6 @@ p {
   font-size: var(--text-h1);
   --tw-leading: 0.75;
   line-height: 0.75;
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
 }
 .loading-section {
   position: fixed;
@@ -348,8 +346,6 @@ p {
   font-size: var(--text-uber);
   --tw-leading: 0.9;
   line-height: 0.9;
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
   color: var(--color-body);
 }
 .hero__date-wrap {
@@ -373,8 +369,6 @@ p {
   font-size: var(--text-uber-large);
   --tw-leading: 0.9;
   line-height: 0.9;
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
   color: var(--color-body);
 }
 .info__heading {
@@ -384,8 +378,6 @@ p {
   font-size: var(--text-h1);
   --tw-leading: 0.75;
   line-height: 0.75;
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
 }
 .info__content {
   padding-top: calc(var(--spacing) * 5);
@@ -426,8 +418,6 @@ p {
   font-size: var(--text-h1);
   --tw-leading: 0.75;
   line-height: 0.75;
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
 }
 .program__card {
   display: flex;
@@ -447,8 +437,6 @@ p {
   text-align: center;
   font-family: var(--font-runtime);
   font-size: var(--text-h4);
-  --tw-font-weight: var(--font-weight-thin);
-  font-weight: var(--font-weight-thin);
 }
 .program__card-info-wrap-outer {
   margin-top: calc(var(--spacing) * 5);
@@ -705,10 +693,6 @@ p {
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-content {
   syntax: "*";
   inherits: false;
@@ -728,6 +712,10 @@ p {
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-space-y-reverse {
   syntax: "*";
@@ -816,11 +804,11 @@ p {
       --tw-border-style: solid;
       --tw-duration: initial;
       --tw-ease: initial;
-      --tw-font-weight: initial;
       --tw-content: "";
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-font-weight: initial;
       --tw-space-y-reverse: 0;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
