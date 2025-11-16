@@ -29,7 +29,7 @@
 }
 
 @font-face {
-    font-family: lucy;
+    font-family: lucy, 'Times New Roman';
     src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
 }
 
@@ -83,7 +83,7 @@ p {
 }
 
 .heading {
-    @apply text-h1 font-lucy font-thin leading-[0.75] relative;
+    @apply text-h1 font-lucy leading-[0.75] relative;
 }
 
 /* ================================ All Styles ================================ */
@@ -119,7 +119,7 @@ p {
 }
 
 .hero__name {
-    @apply font-lucy text-center text-body text-uber leading-[0.9] font-thin pt-12;
+    @apply font-lucy text-center text-body text-uber leading-[0.9] pt-12;
 }
 
 .hero__date-wrap {
@@ -139,7 +139,7 @@ p {
 }
 
 .hero__date {
-    @apply text-uber-large text-body font-runtime font-thin leading-[0.9];
+    @apply text-uber-large text-body font-runtime leading-[0.9];
 }
 
 
@@ -147,7 +147,7 @@ p {
 /* Info Section */
 
 .info__heading {
-    @apply text-h1 font-lucy font-thin leading-[0.75] mt-14 relative;
+    @apply text-h1 font-lucy leading-[0.75] mt-14 relative;
 }
 
 .info__content {
@@ -177,7 +177,7 @@ p {
 }
 
 .program__heading {
-    @apply text-h1 font-lucy font-thin w-full text-center leading-[0.75];
+    @apply text-h1 font-lucy w-full text-center leading-[0.75];
 }
 
 .program__card {
@@ -189,7 +189,7 @@ p {
 }
 
 .program__card-heading {
-    @apply text-h4 font-runtime font-thin text-center mt-5;
+    @apply text-h4 font-runtime text-center mt-5;
 }
 
 .program__card-info-wrap-outer {
