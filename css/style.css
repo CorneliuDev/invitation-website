@@ -226,6 +226,7 @@
   font-display: swap;
 }
 body {
+  overflow-x: hidden;
   background-color: var(--color-tertiary);
   &.loading {
     pointer-events: none;
@@ -238,6 +239,7 @@ section {
   margin-inline: auto;
   width: 100%;
   max-width: var(--breakpoint-sm);
+  overflow-x: hidden;
   padding: calc(var(--spacing) * 5);
 }
 h1, h2, h3, h4, h5, h6, p {

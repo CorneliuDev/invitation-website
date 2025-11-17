@@ -56,7 +56,7 @@
 /* ================================ Base styles ================================ */
 
 body {
-    @apply bg-tertiary;
+    @apply bg-tertiary overflow-x-hidden;
 
     &.loading {
         @apply pointer-events-none;
@@ -68,7 +68,7 @@ body {
 }
 
 section {
-    @apply max-w-screen-sm w-full mx-auto p-5;
+    @apply max-w-screen-sm w-full mx-auto p-5 overflow-x-hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p {
