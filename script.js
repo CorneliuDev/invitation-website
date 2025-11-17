@@ -121,7 +121,7 @@ function countdown(targetDate) {
         <div class="info__countdown-item">${h} ore</div>
         <div class="info__countdown-item">${m} minute</div>
         <div class="info__countdown-item info__countdown-item--seconds">
-            <span class="info__countdown-item--seconds-number">${s} </span>
+            <div class="info__countdown-item--seconds-number"><span>${s} </span></div>
             <span class="info__countdown-item--seconds-text">secunde</span>
             </div>
       </div>

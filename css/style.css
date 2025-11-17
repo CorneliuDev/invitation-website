@@ -325,7 +325,7 @@ p {
 .hero {
   position: relative;
   display: flex;
-  min-height: 100vh;
+  height: 95dvh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -386,6 +386,7 @@ p {
 .info__heading {
   position: relative;
   margin-top: calc(var(--spacing) * 14);
+  text-align: center;
   font-family: var(--font-lucy);
   font-size: var(--text-h1);
   --tw-leading: 0.75;
@@ -395,6 +396,7 @@ p {
 }
 .info__content {
   padding-top: calc(var(--spacing) * 5);
+  text-align: center;
   font-size: var(--text-h6);
   color: var(--color-secondary);
 }
@@ -407,6 +409,11 @@ p {
 .info__countdown-wrap {
   padding-top: calc(var(--spacing) * 8);
 }
+.info__countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .info__countdown-item {
   position: relative;
   font-family: var(--font-runtime);
@@ -415,12 +422,11 @@ p {
   line-height: var(--leading-tight);
   color: var(--color-body);
 }
-.info__countdown-item--seconds-text {
-  position: absolute;
-  top: calc(1/2 * 100%);
-  left: 70px;
-  --tw-translate-y: calc(calc(1/2 * 100%) * -1);
-  translate: var(--tw-translate-x) var(--tw-translate-y);
+.info__countdown-item--seconds {
+  display: flex;
+}
+.info__countdown-item--seconds-number {
+  width: 70px;
 }
 .program {
   padding-top: calc(var(--spacing) * 12);
@@ -726,21 +732,6 @@ p {
   inherits: false;
   initial-value: "";
 }
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -830,9 +821,6 @@ p {
       --tw-duration: initial;
       --tw-ease: initial;
       --tw-content: "";
-      --tw-translate-x: 0;
-      --tw-translate-y: 0;
-      --tw-translate-z: 0;
       --tw-space-y-reverse: 0;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;

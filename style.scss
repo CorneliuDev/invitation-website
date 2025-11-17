@@ -114,7 +114,7 @@ p {
 /* Hero Section */
 
 .hero {
-    @apply bg-center bg-no-repeat bg-cover relative text-tertiary flex flex-col justify-center items-center min-h-screen;
+    @apply bg-center bg-no-repeat bg-cover relative text-tertiary flex flex-col justify-center items-center h-[95dvh];
     background-image: url(../media/hero.webp);  
 
     &::before {
@@ -148,11 +148,11 @@ p {
 /* Info Section */
 
 .info__heading {
-    @apply text-h1 font-lucy font-thin leading-[0.75] mt-14 relative;
+    @apply text-h1 font-lucy text-center font-thin leading-[0.75] mt-14 relative;
 }
 
 .info__content {
-    @apply text-secondary text-h6 pt-5;
+    @apply text-secondary text-center text-h6 pt-5;
 }
 
 .info__calendar {
@@ -163,12 +163,20 @@ p {
     @apply pt-8;
 }
 
+.info__countdown {
+    @apply flex flex-col items-center;
+}
+
 .info__countdown-item {
     @apply font-runtime text-h2 leading-tight relative text-body; 
 }
 
-.info__countdown-item--seconds-text {
-    @apply absolute top-1/2 -translate-y-1/2 left-[70px];
+.info__countdown-item--seconds {
+    @apply flex;
+}
+
+.info__countdown-item--seconds-number {
+    @apply w-[70px];
 }
 
 /* Program */
