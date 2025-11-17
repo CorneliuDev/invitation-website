@@ -367,7 +367,7 @@ p {
   span {
     font-size: var(--text-h1);
     font-style: italic;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman';
   }
 }
 .hero__date-wrap {
