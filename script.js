@@ -59,11 +59,14 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
         if (result.success) {
             console.log("Success:", result.message);
             form.reset();
+            form.innerHTML = '<p class="form__success">Răspunsul a fost trimis cu succes!</p>';
         } else {
             console.error("Error from function:", result.message);
             console.error("Details:", result.details);
         }
+        
 
+    
     } catch (err) {
         console.error('Network Error:', err);
         alert('A apărut o eroare de rețea. Vă rugăm să încercați din nou.');

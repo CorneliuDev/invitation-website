@@ -9,9 +9,9 @@
     --color-body: #272624;
     
     /* Fonts */
-    --font-lucy: lucy;
-    --font-runtime: runtime;
-    --font-mate: mate;
+    --font-lucy: "Lucy Said Ok",Times, serif;
+  --font-runtime: "Runtime", sans-serif;
+  --font-mate: "Mate", serif;
 
     /* Font Sizes */
     --text-uber-large: 124px;
@@ -29,18 +29,27 @@
 }
 
 @font-face {
-    font-family: lucy, 'Times New Roman';
-    src: url(../fonts/lucy-said-ok-personal-use.italic.ttf);
+  font-family: "Lucy Said Ok";
+  src: url("../fonts/lucy-said-ok-personal-use.italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;      
+  font-display: swap;
 }
 
 @font-face {
-    font-family: runtime, mate, 'Times New Roman';
-    src: url(../fonts/Runtime.otf);
+  font-family: "Runtime";
+  src: url("../fonts/Runtime.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: mate, 'Times New Roman', Times, serif;
-    src: url(../fonts/mate.ttf);
+  font-family: "Mate";
+  src: url("../fonts/mate.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 
@@ -67,7 +76,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 p {
-    @apply font-mate;
+    @apply font-sans font-light;
 }
 
 .btn {
@@ -83,7 +92,7 @@ p {
 }
 
 .heading {
-    @apply text-h1 font-lucy leading-[0.75] relative;
+    @apply text-h1 font-lucy font-thin leading-[0.75] relative;
 }
 
 /* ================================ All Styles ================================ */
@@ -105,8 +114,8 @@ p {
 /* Hero Section */
 
 .hero {
-    @apply bg-center bg-no-repeat bg-cover relative text-tertiary flex flex-col justify-center items-center;
-    background-image: url(../media/hero.webp) !important;  
+    @apply bg-center bg-no-repeat bg-cover relative text-tertiary flex flex-col justify-center items-center min-h-screen;
+    background-image: url(../media/hero.webp);  
 
     &::before {
         @apply content-[''] absolute bottom-0 left-0 w-full h-1/2;
@@ -119,27 +128,19 @@ p {
 }
 
 .hero__name {
-    @apply font-lucy text-center text-body text-uber leading-[0.9] pt-12;
+    @apply font-lucy font-thin text-center text-body text-uber leading-[0.9];
 }
 
 .hero__date-wrap {
-    @apply flex flex-col items-center;
+    @apply flex justify-center gap-4 items-center w-full mt-5;
 }
 
 .hero__vertical-line {
-    @apply bg-body w-[2px] h-20;
-}
-
-.hero__vertical-line--top {
-    @apply mb-5;
-}
-
-.hero__vertical-line--bottom {
-    @apply mt-10;
+    @apply bg-body h-[2px] w-full;
 }
 
 .hero__date {
-    @apply text-uber-large text-body font-runtime leading-[0.9];
+    @apply text-uber text-body font-runtime leading-[0.9];
 }
 
 
@@ -147,7 +148,7 @@ p {
 /* Info Section */
 
 .info__heading {
-    @apply text-h1 font-lucy leading-[0.75] mt-14 relative;
+    @apply text-h1 font-lucy font-thin leading-[0.75] mt-14 relative;
 }
 
 .info__content {
@@ -177,7 +178,7 @@ p {
 }
 
 .program__heading {
-    @apply text-h1 font-lucy w-full text-center leading-[0.75];
+    @apply text-h1 font-lucy font-thin w-full text-center leading-[0.75];
 }
 
 .program__card {
@@ -220,7 +221,7 @@ p {
     @apply font-runtime text-left;
 
     span {
-        @apply font-lucy text-h4;
+        @apply font-lucy font-thin text-h4;
     }
 }
 
@@ -273,7 +274,8 @@ p {
 }
 
 .form__label {
-  @apply text-body font-runtime text-h6;
+  @apply text-body text-h6;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .form__input, .form__textarea {
@@ -339,4 +341,8 @@ p {
 /* General property for other browsers (optional, but good for consistency) */
 .form__input-number[type=number] {
   appearance: textfield;
+}
+
+.form__success {
+    @apply text-center text-h4 text-body font-runtime;
 }
