@@ -137,3 +137,32 @@ function countdown(targetDate) {
 countdown('2026-05-16 00:00:00');
 
 AOS.init();
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const radioVeni = document.querySelectorAll('input[name="veniti"]');
+    const numarPersoaneInput = document.getElementById('numar');
+
+    // Function to update the number field based on radio selection
+    function updateNumarPersoane() {
+        if (radioVeni[1].checked) {  // "Nu, nu voi veni" is selected
+            numarPersoaneInput.value = '0';
+            numarPersoaneInput.setAttribute('readonly', 'readonly'); // optional: prevent editing
+            numarPersoaneInput.style.opacity = '0.6';                // visual feedback
+        } else if (radioVeni[0].checked) { // "Da, voi veni" is selected
+            numarPersoaneInput.value = '';     // clear the field
+            numarPersoaneInput.removeAttribute('readonly');
+            numarPersoaneInput.style.opacity = '1';
+            numarPersoaneInput.focus();        // nice UX: focus so they can type immediately
+        }
+    }
+
+    // Listen to any change on the "Veti veni?" radios
+    radioVeni.forEach(radio => {
+        radio.addEventListener('change', updateNumarPersoane);
+    });
+
+    // Run once on page load in case a radio is pre-selected
+    updateNumarPersoane();
+});

@@ -548,6 +548,7 @@ p {
   }
 }
 .important__card-content {
+  z-index: 10;
   padding-top: calc(var(--spacing) * 3);
   text-align: center;
   font-size: var(--text-md);

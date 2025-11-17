@@ -262,7 +262,7 @@ p {
 }
 
 .important__card-content {
-    @apply text-center pt-3 text-md;
+    @apply text-center pt-3 text-md z-10;
 }
 
 .important__card-link {
