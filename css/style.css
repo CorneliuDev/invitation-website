@@ -366,7 +366,7 @@ p {
   color: var(--color-body);
   span {
     font-size: var(--text-h1);
-    font-style: italic;
+    font-style: italic !important;
     font-family: 'Times New Roman';
   }
 }
