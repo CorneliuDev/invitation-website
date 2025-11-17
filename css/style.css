@@ -364,6 +364,11 @@ p {
   --tw-font-weight: var(--font-weight-thin);
   font-weight: var(--font-weight-thin);
   color: var(--color-body);
+  span {
+    font-size: var(--text-h1);
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+  }
 }
 .hero__date-wrap {
   margin-top: calc(var(--spacing) * 5);

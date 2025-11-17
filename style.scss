@@ -129,6 +129,11 @@ p {
 
 .hero__name {
     @apply font-lucy font-thin text-center text-body text-uber leading-[0.9];
+
+    span {
+        @apply text-h1 italic;
+        font-family: 'Times New Roman', Times, serif;
+    }
 }
 
 .hero__date-wrap {
