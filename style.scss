@@ -155,6 +155,12 @@ p {
 
 .info__heading {
     @apply text-h1 font-lucy text-center font-thin leading-[0.75] mt-14 relative;
+
+    span {
+        @apply text-h3;
+        font-family: 'Times New Roman';
+        font-style: italic !important;
+    }
 }
 
 .info__content {
