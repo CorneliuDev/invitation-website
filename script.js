@@ -134,7 +134,7 @@ function countdown(targetDate) {
 }
 
 // Usage:
-countdown('2026-05-16 00:00:00');
+countdown('2026-05-16 01:00:00');
 
 AOS.init();
 
