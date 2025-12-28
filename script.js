@@ -143,18 +143,23 @@ AOS.init();
 document.addEventListener('DOMContentLoaded', function () {
     const radioVeni = document.querySelectorAll('input[name="veniti"]');
     const numarPersoaneInput = document.getElementById('numar');
+    const bauturiInput = document.getElementById('bauturi');
 
     // Function to update the number field based on radio selection
     function updateNumarPersoane() {
         if (radioVeni[1].checked) {  // "Nu, nu voi veni" is selected
             numarPersoaneInput.value = '0';
             numarPersoaneInput.setAttribute('readonly', 'readonly'); // optional: prevent editing
+            bauturiInput.setAttribute('readonly', 'readonly');
             numarPersoaneInput.style.opacity = '0.6';                // visual feedback
+            bauturiInput.style.opacity = '0.6';
         } else if (radioVeni[0].checked) { // "Da, voi veni" is selected
             numarPersoaneInput.value = '';     // clear the field
             numarPersoaneInput.removeAttribute('readonly');
             numarPersoaneInput.style.opacity = '1';
             numarPersoaneInput.focus();        // nice UX: focus so they can type immediately
+            bauturiInput.removeAttribute('readonly');
+            bauturiInput.style.opacity = '1';
         }
     }
 
