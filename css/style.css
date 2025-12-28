@@ -401,9 +401,9 @@ p {
   --tw-font-weight: var(--font-weight-thin);
   font-weight: var(--font-weight-thin);
   span {
-    font-size: var(--text-h2);
+    font-size: var(--text-h3);
     font-family: 'Times New Roman';
-    font-style: oblique !important;
+    font-style: italic !important;
   }
 }
 .info__content {
@@ -555,6 +555,7 @@ p {
 .important__card-content {
   z-index: 10;
   padding-top: calc(var(--spacing) * 3);
+  padding-bottom: calc(var(--spacing) * 5);
   text-align: center;
   font-size: var(--text-md);
 }
